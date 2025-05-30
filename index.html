@@ -5,10 +5,223 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Webpage</title>
     <link rel="stylesheet" href="css/style.css">
+    <!-- <script src="js/script.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
 </head>
+
 <body>
-    <h1>Welcome to My Simple Webpage</h1>
-    <p>This is a minimal example of a simple webpage.</p>
+    <header>
+        <div class="header-bg"></div>
+        <div class="header-content">
+            <h1>Seokjin Glen Yun</h1>
+            <p>Material & Data Scientist</p>
+        </div>
+    </header>
+
+    </header>
+
+<div class="container">
+    <nav class="sidebar" :class="{ collapsed: isCollapsed }" id="sidebar"
+        @mouseenter="isCollapsed = false" @mouseleave="isCollapsed = true">
+        <ul v-show="!isCollapsed">
+            <li><a href="#education" @click="scrollToSection('education')">Education</a></li>
+            <li><a href="#training" @click="scrollToSection('training')">Professional Training</a></li>
+            <li><a href="#career" @click="scrollToSection('career')">Career History</a></li>
+            <li><a href="#projects" @click="scrollToSection('projects')">Professional Projects</a></li>
+            <li><a href="#personal-projects" @click="scrollToSection('personal-projects')">Personal Projects</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div id="education">
+            <h2>Education</h2>
+    
+            <div class="education-card">
+                <h3>Ph.D in Materials Science and Engineering</h3>
+                <span class="period">Korea University (2013.03-2018.02)</span>
+                <p class="thesis">Thesis: SOT-MRAM Fabrication & Micromagnetic Simulation</p>
+                <h4>Research Projects:</h4>
+                <ul>
+                    <li>Development of magmatic multilayers for high density spin devices</li>
+                    <li>Spin-Orbitronic Materials Discovery for Logic-in-Memory</li>
+                    <li>Development of GPU-Accelerated Micromagnetic Simulator</li>
+                </ul>
+            </div>
+            
+            <div class="education-card">
+                <h3>B.S. in Materials Science and Engineering</h3>
+                <span class="period">Korea University (2009.03-2013.02)</span>
+            </div>
+        </div>
+        <div id="training"><h2>Professional Training</h2>
+            <div class="education-card">
+                <h3>Full-time Master’s Degree Program, LG AI Graduate School</h3>
+                <span class="period">LG AI Research (2021.03-2021.12)</span>
+                <p class="thesis">Thesis: Instance Segmentation & Object Detection</p>
+                <h4>Research Projects:</h4>
+                <ul>
+                    <li>Tracking and Segmenttion for Swelling Behavior of Multiple SAP particles</li>
+                </ul>
+            </div>
+
+            <div class="education-card">
+                <h3>AI Core Talent Training Program, DX Industry-Academic Cooperation Center</h3>
+                <span class="period">Seoul National University (2020.12-2021.02)</span>
+            </div>
+        </div>
+        <div id="career"><h2>Career History</h2>
+        
+        
+            <div class="education-card">
+                    <h3>Part Leader</h3>
+                    <span class="period">AI Part, Petrochemical Business Headquarters, LG Chem (2025.01-Present)</span>
+                    <h4>Projects:</h4>
+                    <ul>
+                        <li>Development of AI scheduler for NCC naphtha feedstock operations</li>
+                        <li>Built a multi-objective optimization dashboard for VCM cracker coil
+    coking and operating cost reduction</li>
+                        <li>Development of customer solution document AI search system</li>
+                    </ul>
+            </div>
+            
+            <div class="education-card">
+                    <h3>Team Leader</h3>
+                    <span class="period">DX Team, Petrochemical Laboratory, LG Chem (2022.07-2024.12)</span>
+                    <h4>Projects:</h4>
+                    <ul>
+                        <li>Development of AI material discovery models and framework</li>
+                        <li>Development of R&D document LLM chatbot</li>
+                        <li>Multivariate regression for polymer material properties</li>
+                        <li>Quantification and automation of sensory QA processes</li>
+                    </ul>
+            </div>
+
+            <div class="education-card">
+                    <h3>Senior Researcher</h3>
+                    <span class="period">DX Team, Petrochemical Laboratory, LG Chem (2020.01-2022.07)</span>
+                    <h4>Projects:</h4>
+                    <ul>
+                        <li>Multivariate regression for polymer material properties</li>
+                        <li>Quantification and automation of sensory QA process</li>
+                        <li>Development of AutoML library</li>
+                    </ul>
+            </div>
+
+            <div class="education-card">
+                    <h3>Senior Researcher</h3>
+                    <span class="period">AFM PJT, Fundamental Material Laboratory, LG Chem (2019.01-2019.12)</span>
+                    <h4>Projects:</h4>
+                    <ul>
+                        <li>Development of magnetic ferrite materials</li>
+                        <li>Development of magnetic field induced molding process</li>
+                    </ul>
+            </div>
+
+            <div class="education-card">
+                    <h3>Postdoctoral fellow</h3>
+                    <span class="period">Nano Spintronics Laboratory, KAIST (2018.04-2018.12)</span>
+                    <p class="thesis">Thesis: SOT-MRAM Fabrication & Micromagnetic Simulation</p>
+                    <h4>Projects:</h4>
+                    <ul>
+                        <li>Spin-Orbitronic Materials Discovery for Logic-in-Memory</li>
+                    </ul>
+            </div>
+        
+        </div>
+        <div id="projects"><h2>Professional Projects</h2>
+        
+        
+        <div class="project-grid">
+        <!-- 1행 -->
+        <div class="project-card">
+                    <div class="project-icon">
+                        <img src="source/icons/ai-model.svg" alt="AI Model">
+                    </div>
+                    <h3>AI Material Discovery</h3>
+                    <p>Machine learning framework for accelerated polymer development</p>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-icon">
+                        <img src="source/icons/chatbot.svg" alt="Chatbot">
+                    </div>
+                    <h3>R&D Document Chatbot</h3>
+                    <p>LLM-powered search system for technical documents</p>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-icon">
+                        <img src="source/icons/dashboard.svg" alt="Dashboard">
+                    </div>
+                    <h3>Multi-objective Optimization</h3>
+                    <p>Interactive dashboard for VCM cracker optimization</p>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-icon">
+                        <img src="source/icons/scheduler.svg" alt="Scheduler">
+                    </div>
+                    <h3>AI Scheduler</h3>
+                    <p>ML model for naphtha feedstock operations</p>
+                </div>
+                
+                <!-- 2행 -->
+                <div class="project-card">
+                    <div class="project-icon">
+                        <img src="source/icons/automl.svg" alt="AutoML">
+                    </div>
+                    <h3>AutoML Library</h3>
+                    <p>Custom automated machine learning pipeline</p>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-icon">
+                        <img src="source/icons/qa.svg" alt="QA">
+                    </div>
+                    <h3>QA Automation</h3>
+                    <p>Computer vision for sensory quality assessment</p>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-icon">
+                        <img src="source/icons/regression.svg" alt="Regression">
+                    </div>
+                    <h3>Polymer Properties Prediction</h3>
+                    <p>Multivariate regression models for material science</p>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-icon">
+                        <img src="source/icons/magnetic.svg" alt="Magnetic">
+                    </div>
+                    <h3>Magnetic Materials</h3>
+                    <p>Development of advanced magnetic ferrite materials</p>
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        </div>
+        <div id="personal-projects"><h2>Personal Projects</h2></div>
+    </main>
+</div>
+
+
+
+
+
+
+    <footer>
+        <p></p>
+    </footer>
+
+
     <script src="js/script.js"></script>
+
+
 </body>
 </html>

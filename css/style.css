@@ -1,19 +1,90 @@
+/* 기본 스타일 */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(90deg, #d5e9d6 0%, #2a612d 100%);
 }
 
+/* 헤더 스타일 */
 header {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 0;
+    position: relative;
+    background: none;
+    color: #fff;
     text-align: center;
+    height: 100vh;
+    min-height: 500px;
+    padding: 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 200px; /* 사이드바 너비만큼 */
+}
+
+.header-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../source/ChemBot.png') center center/cover no-repeat;
+    opacity: 0.55;
+    z-index: 1;
+}
+
+.header-content {
+    position: sticky;
+    top: 50vh;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(32, 51, 48, 0.288);
+    backdrop-filter: blur(3px);
+}
+
+header h1 {
+    width: 100%;
+    text-align: center;
+    margin: 0.5rem 0;
+    color: #fff;
+    text-shadow: 0 2px 16px rgba(0,0,0,0.6);
+    font-size: 3rem;
+}
+
+header p {
+    width: 100%;
+    text-align: center;
+    margin: 0.5rem 0;
+    color: #fff;
+    text-shadow: 0 2px 16px rgba(0,0,0,0.6);
+    font-size: 1.2rem;
+}
+
+/* 메인 콘텐츠 영역 */
+.container {
+    display: flex;
+    min-height: 70vh;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding-left: 200px; /* 사이드바 너비만큼 */
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
 }
 
 main {
-    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 80vh;
+    padding: 2rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 
+/* 푸터 스타일 */
 footer {
     background-color: #333;
     color: white;
@@ -21,5 +92,281 @@ footer {
     padding: 10px 0;
     position: fixed;
     bottom: 0;
+    left: 0;
     width: 100%;
+    padding-left: calc(2rem + 200px); /* 사이드바 너비만큼 */
+    padding-right: 2rem;
+    box-sizing: border-box;
+    z-index: 10;
+}
+
+/* 사이드바 스타일 */
+.sidebar {
+    width: 200px;
+    min-width: 48px;
+    background: linear-gradient(180deg, #2d302d 0%, #b3cc85 100%);
+    color: #fff;
+    padding: 2rem 1rem;
+    margin: 0;
+    min-height: 100vh;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    transition: width 0.3s cubic-bezier(.4,2,.6,1), padding 0.3s cubic-bezier(.4,2,.6,1);
+    overflow: hidden;
+    z-index: 100;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    transition: opacity 0.2s, max-height 0.3s cubic-bezier(.4,2,.6,1);
+    opacity: 1;
+    max-height: 1000px;
+    overflow: hidden;
+}
+
+.sidebar.collapsed {
+    width: 48px;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.sidebar.collapsed ul {
+    opacity: 0;
+    max-height: 0;
+    pointer-events: none;
+}
+
+.sidebar li {
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+.sidebar a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0.7rem 1rem;
+    border-radius: 8px;
+    display: block;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+    letter-spacing: 0.5px;
+}
+
+.sidebar a:hover, .sidebar a:focus {
+    background: #fff;
+    color: #232526;
+    transform: translateX(8px) scale(1.05);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* 미디어 쿼리 - 모바일 대응 */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        min-height: 60px;
+        padding: 0.5rem;
+    }
+    
+    header, .container, footer {
+        padding-left: 0;
+        padding-top: 60px;
+    }
+    
+    .sidebar.collapsed {
+        height: 60px;
+    }
+}
+
+html {
+    scroll-behavior: smooth; /* 부드러운 스크롤 기본 설정 */
+}
+
+/* 각 섹션 스타일 */
+main > div {
+    min-height: 70vh;
+    padding: 4rem 2rem;
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom: 1px solid #eaeaea;
+}
+
+main > div:last-child {
+    border-bottom: none;
+}
+
+main > div h2 {
+    margin-top: 0;
+    padding-top: 2rem;
+    position: relative;
+}
+
+main > div h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 40vw;
+    height: 3px;
+    background: linear-gradient(135deg, #232526 0%, #414345 100%);
+}
+
+
+
+
+
+/* 카드 스타일 추가 */
+.education-card {
+    background: rgba(255, 255, 255, 0.7); /* 반투명 배경 */
+    backdrop-filter: blur(10px); /* 블러 효과 */
+    -webkit-backdrop-filter: blur(10px); /* 사파리 지원 */
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.education-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.8);
+}
+
+
+.education-card h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+/* .education-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(135deg, #536670 0%, #191b1d 100%);
+} */
+
+.education-card .period {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.education-card .thesis {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.education-card ul {
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+}
+
+.education-card li {
+    margin-bottom: 0.5rem;
+    color: #444;
+}
+
+
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.project-card {
+    background: rgba(255, 255, 255, 0.7); /* 반투명 배경 */
+    backdrop-filter: blur(10px); /* 블러 효과 */
+    -webkit-backdrop-filter: blur(10px); /* 사파리 지원 */
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.project-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(246, 247, 251, 0.6); /* 반투명 배경 */
+    backdrop-filter: blur(5px);
+    border-radius: 50%;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.project-icon img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.project-card h3 {
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.project-card p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1200px) {
+    .project-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
 }

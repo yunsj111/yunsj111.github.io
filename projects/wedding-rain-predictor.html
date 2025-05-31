@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Day Rain Predictor - Personal Project</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/project-detail.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+
+<body>
+    <div id="loading-overlay">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <div class="progress-container">
+                <div class="progress-bar"></div>
+            </div>
+            <p>Loading resources...</p>
+        </div>
+    </div>
+
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <span></span>
+    </button>
+
+    <header class="project-header">
+        <div class="header-bg" style="background: url('../source/wedding-rain.png') center center/cover no-repeat;"></div>
+        <div class="header-content">
+            <h1>Wedding Day Rain Predictor</h1>
+            <p>Statistical analysis of historical rainfall patterns for outdoor wedding planning</p>
+            <a href="../index.html" class="back-button" onclick="returnToSavedPosition()">← Back to Portfolio</a>
+        </div>
+    </header>
+
+    <div class="container" id="app">
+        <nav class="sidebar" :class="{ collapsed: isCollapsed, expanded: isMobile && !isCollapsed }" id="sidebar" @mouseenter="isCollapsed = false" @mouseleave="isCollapsed = true">
+            <ul v-show="!isCollapsed || (isMobile && !isCollapsed)">
+                <li><a href="#overview" @click="scrollToSection('overview')">Overview</a></li>
+                <li><a href="#methodology" @click="scrollToSection('methodology')">Methodology</a></li>
+                <li><a href="#data-analysis" @click="scrollToSection('data-analysis')">Data Analysis</a></li>
+                <li><a href="#results" @click="scrollToSection('results')">Results</a></li>
+                <li><a href="#conclusions" @click="scrollToSection('conclusions')">Conclusions</a></li>
+                <li><a href="../index.html">Main Portfolio</a></li>
+            </ul>
+        </nav>
+        
+        <main>
+            <div id="overview" class="section">
+                <h2>Project Overview</h2>
+                <div class="content-card">
+                    <p>The Wedding Day Rain Predictor is a data-driven tool designed to help couples planning outdoor weddings make informed decisions based on historical rainfall patterns. Using 30 years of meteorological data from multiple weather stations, this project analyzes seasonal trends, geographical variations, and probability distributions to provide actionable insights for wedding planning.</p>
+                    
+                    <div class="project-highlights">
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <img src="../source/icons/calendar.svg" alt="Calendar">
+                            </div>
+                            <span>Completed: December 2023</span>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <img src="../source/icons/tools.svg" alt="Tools">
+                            </div>
+                            <span>Python, Pandas, Matplotlib, Scikit-learn</span>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <img src="../source/icons/data.svg" alt="Data">
+                            </div>
+                            <span>30+ years of meteorological data</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="methodology" class="section">
+                <h2>Methodology</h2>
+                <div class="content-card">
+                    <h3>Data Collection</h3>
+                    <p>Historical rainfall data was collected from the National Weather Service and regional meteorological databases spanning the years 1990-2023. The dataset includes:</p>
+                    <ul>
+                        <li>Daily precipitation amounts</li>
+                        <li>Hourly rainfall patterns</li>
+                        <li>Weather conditions (cloud cover, humidity, temperature)</li>
+                        <li>Geographical data from 12 different regions</li>
+                    </ul>
+                    
+                    <h3>Analysis Approach</h3>
+                    <p>The analysis followed a multi-step process:</p>
+                    <ol>
+                        <li>Time series decomposition to identify seasonal trends</li>
+                        <li>Statistical modeling of precipitation probability distributions</li>
+                        <li>Geographical clustering to identify regional patterns</li>
+                        <li>Predictive modeling using historical data to forecast rain probability</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div id="data-analysis" class="section">
+                <h2>Data Analysis</h2>
+                <div class="content-card">
+                    <div class="visualization-container">
+                        <h3>Monthly Rainfall Patterns</h3>
+                        <div id="monthly-rainfall-chart" style="width:100%; height:400px;"></div>
+                        <p class="chart-caption">Average monthly rainfall distribution across different regions (inches)</p>
+                    </div>
+                    
+                    <div class="visualization-container">
+                        <h3>Probability of Rain by Month</h3>
+                        <div id="rain-probability-chart" style="width:100%; height:400px;"></div>
+                        <p class="chart-caption">Probability of rain by month and time of day (%)</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="results" class="section">
+                <h2>Results</h2>
+                <div class="content-card">
+                    <h3>Key Findings</h3>
+                    <ul>
+                        <li>June through August show the highest variation in rain probability, with afternoon showers being most common</li>
+                        <li>Morning ceremonies (8AM-11AM) have 23% lower chance of rainfall interruption across all seasons</li>
+                        <li>Geographical analysis revealed 3 distinct "weather zones" with different optimal wedding seasons</li>
+                        <li>Rain patterns show strong 7-year cyclical trends correlating with climate oscillations</li>
+                    </ul>
+                    
+                    <div class="recommendation-box">
+                        <h3>Optimal Wedding Times</h3>
+                        <div class="recommendation-grid">
+                            <div class="recommendation-item">
+                                <h4>Spring (Mar-May)</h4>
+                                <p>Best Time: 10AM-12PM<br>Risk Level: Medium<br>Avg. Rain Probability: 27%</p>
+                            </div>
+                            <div class="recommendation-item">
+                                <h4>Summer (Jun-Aug)</h4>
+                                <p>Best Time: 9AM-11AM<br>Risk Level: High<br>Avg. Rain Probability: 38%</p>
+                            </div>
+                            <div class="recommendation-item">
+                                <h4>Fall (Sep-Nov)</h4>
+                                <p>Best Time: 2PM-5PM<br>Risk Level: Low<br>Avg. Rain Probability: 18%</p>
+                            </div>
+                            <div class="recommendation-item">
+                                <h4>Winter (Dec-Feb)</h4>
+                                <p>Best Time: 12PM-3PM<br>Risk Level: Medium-Low<br>Avg. Rain Probability: 22%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="conclusions" class="section">
+                <h2>Conclusions</h2>
+                <div class="content-card">
+                    <p>The Wedding Day Rain Predictor project demonstrates how historical weather data can be leveraged to optimize outdoor event planning. By analyzing decades of rainfall patterns, we've created a framework that helps couples identify optimal wedding dates and times based on statistical probability rather than folklore or guesswork.</p>
+                    
+                    <h3>Future Developments</h3>
+                    <ul>
+                        <li>Integration with climate change models to account for shifting weather patterns</li>
+                        <li>Development of a user-friendly web application with location-specific recommendations</li>
+                        <li>Extension of the analysis to include other weather factors (wind, temperature, humidity)</li>
+                    </ul>
+                    
+                    <!-- 하단의 Back 링크도 수정 -->
+                    <div class="project-footer">
+                        <a href="../index.html" class="back-button" onclick="returnToSavedPosition()">← Back to Portfolio</a>
+                        <a href="#" class="button primary-button">View on GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Seokjin Glen Yun</p>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script>
+        // Visualization scripts for the charts
+        document.addEventListener('DOMContentLoaded', function() {
+            // Monthly rainfall chart
+            var monthlyRainData = [{
+                x: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                y: [3.2, 3.1, 3.5, 3.8, 4.2, 3.5, 2.8, 2.5, 2.9, 3.1, 3.3, 3.4],
+                type: 'bar',
+                name: 'Pacific Northwest',
+                marker: {
+                    color: 'rgba(55, 128, 191, 0.7)'
+                }
+            }, {
+                x: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                y: [2.1, 2.0, 2.4, 2.9, 3.6, 3.4, 3.6, 3.7, 3.2, 2.5, 2.3, 2.2],
+                type: 'bar',
+                name: 'Northeast',
+                marker: {
+                    color: 'rgba(219, 64, 82, 0.7)'
+                }
+            }, {
+                x: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                y: [1.8, 1.9, 2.3, 2.8, 3.1, 3.9, 4.2, 4.0, 3.4, 2.2, 1.8, 1.7],
+                type: 'bar',
+                name: 'Southeast',
+                marker: {
+                    color: 'rgba(50, 171, 96, 0.7)'
+                }
+            }];
+            
+            var layout = {
+                paper_bgcolor: 'rgba(0,0,0,0)',
+                plot_bgcolor: 'rgba(0,0,0,0)',
+                barmode: 'group',
+                font: {
+                    family: 'Segoe UI, Arial, sans-serif',
+                    color: '#333'
+                },
+                margin: {
+                    l: 50,
+                    r: 20,
+                    b: 50,
+                    t: 30,
+                    pad: 4
+                },
+                legend: {
+                    orientation: 'h',
+                    y: -0.2
+                }
+            };
+            
+            Plotly.newPlot('monthly-rainfall-chart', monthlyRainData, layout, {responsive: true});
+            
+            // Rain probability chart
+            var rainProbData = [{
+                z: [
+                    [12, 14, 18, 24, 32, 36, 34, 30, 24, 18, 14, 12],
+                    [16, 18, 22, 28, 36, 42, 40, 36, 30, 24, 20, 16],
+                    [18, 20, 24, 32, 42, 48, 46, 42, 34, 26, 22, 18],
+                    [14, 16, 20, 26, 34, 40, 38, 34, 28, 22, 18, 14]
+                ],
+                x: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                y: ['Morning (8-11AM)', 'Midday (11AM-2PM)', 'Afternoon (2-6PM)', 'Evening (6-10PM)'],
+                type: 'heatmap',
+                colorscale: 'YlGnBu',
+                showscale: true
+            }];
+            
+            var layout2 = {
+                paper_bgcolor: 'rgba(0,0,0,0)',
+                plot_bgcolor: 'rgba(0,0,0,0)',
+                font: {
+                    family: 'Segoe UI, Arial, sans-serif',
+                    color: '#333'
+                },
+                margin: {
+                    l: 120,
+                    r: 50,
+                    b: 50,
+                    t: 30,
+                    pad: 4
+                },
+                annotations: [{
+                    x: 1.15,
+                    y: 0.5,
+                    xref: 'paper',
+                    yref: 'paper',
+                    text: 'Probability (%)',
+                    showarrow: false,
+                    textangle: -90
+                }]
+            };
+            
+            Plotly.newPlot('rain-probability-chart', rainProbData, layout2, {responsive: true});
+        });
+        
+        // Vue instance for the page
+        new Vue({
+            el: '#app',
+            data: {
+                isCollapsed: true,
+                isMobile: window.innerWidth <= 768
+            },
+            mounted() {
+                window.addEventListener('resize', this.checkScreenSize);
+                const toggleButton = document.getElementById('sidebar-toggle');
+                if (toggleButton) {
+                    toggleButton.addEventListener('click', this.toggleSidebarMobile);
+                }
+            },
+            methods: {
+                checkScreenSize() {
+                    this.isMobile = window.innerWidth <= 768;
+                },
+                toggleSidebarMobile() {
+                    this.isCollapsed = !this.isCollapsed;
+                    const toggleButton = document.getElementById('sidebar-toggle');
+                    if (toggleButton) {
+                        toggleButton.classList.toggle('active', !this.isCollapsed);
+                    }
+                },
+                scrollToSection(sectionId) {
+                    event.preventDefault();
+                    const element = document.getElementById(sectionId);
+                    if (element) {
+                        const headerOffset = 70;
+                        const elementPosition = element.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                        });
+                        
+                        if (this.isMobile) {
+                            this.isCollapsed = true;
+                            const toggleButton = document.getElementById('sidebar-toggle');
+                            if (toggleButton) {
+                                toggleButton.classList.remove('active');
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

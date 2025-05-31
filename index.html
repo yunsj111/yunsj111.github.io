@@ -37,13 +37,12 @@
 
 <div class="container">
     
-    <nav class="sidebar" :class="{ collapsed: isCollapsed, expanded: isMobile && !isCollapsed }" id="sidebar" @mouseenter="isCollapsed = false" @mouseleave="isCollapsed = true">
-        <ul v-show="!isCollapsed || (isMobile && !isCollapsed)">
-
-
-    <!-- <nav class="sidebar" :class="{ collapsed: isCollapsed }" id="sidebar"
-        @mouseenter="isCollapsed = false" @mouseleave="isCollapsed = true">
-        <ul v-show="!isCollapsed"> -->
+    <nav class="sidebar" 
+        :class="{ collapsed: isCollapsed && !isMobile, expanded: isMobile && !isCollapsed }" 
+        id="sidebar" 
+        @mouseenter="!isMobile && (isCollapsed = false)" 
+        @mouseleave="!isMobile && (isCollapsed = true)">
+        <ul v-show="isMobile ? !isCollapsed : !isCollapsed">
             <li><a href="#education" @click="scrollToSection('education')">Education</a></li>
             <li><a href="#training" @click="scrollToSection('training')">Professional Training</a></li>
             <li><a href="#career" @click="scrollToSection('career')">Career History</a></li>
@@ -97,8 +96,7 @@
                     <h4>Projects:</h4>
                     <ul>
                         <li>Development of AI scheduler for NCC naphtha feedstock operations</li>
-                        <li>Built a multi-objective optimization dashboard for VCM cracker coil
-    coking and operating cost reduction</li>
+                        <li>Development of Multi-objective optimization dashboard for VCM cracker coil coking and operating cost reduction</li>
                         <li>Development of customer solution document AI search system</li>
                     </ul>
             </div>

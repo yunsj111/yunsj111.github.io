@@ -8,11 +8,12 @@ new Vue({
     mounted() {
         // 화면 크기 변화 감지
         window.addEventListener('resize', this.checkScreenSize);
+        this.checkScreenSize();
         
-        // 토글 버튼 이벤트 리스너
+        // 토글 버튼에 이벤트 연결
         const toggleButton = document.getElementById('sidebar-toggle');
         if (toggleButton) {
-            toggleButton.addEventListener('click', this.toggleSidebarMobile);
+            toggleButton.addEventListener('click', this.toggleSidebar);
         }
     },
     methods: {
@@ -20,11 +21,6 @@ new Vue({
             this.isMobile = window.innerWidth <= 768;
         },
         toggleSidebar() {
-            if (!this.isMobile) {
-                this.isCollapsed = !this.isCollapsed;
-            }
-        },
-        toggleSidebarMobile() {
             this.isCollapsed = !this.isCollapsed;
             const toggleButton = document.getElementById('sidebar-toggle');
             if (toggleButton) {
@@ -32,24 +28,19 @@ new Vue({
             }
         },
         scrollToSection(sectionId) {
-            // 기본 동작 방지
             event.preventDefault();
-            
-            // 해당 섹션으로 부드럽게 스크롤
             const element = document.getElementById(sectionId);
             if (element) {
-                // 사이드바 너비와 헤더 높이 등을 고려한 위치 계산
-                const headerOffset = 70; // 상단 여백 조정
+                const headerOffset = 70;
                 const elementPosition = element.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
                 
-                // 부드러운 스크롤 효과
                 window.scrollTo({
                     top: offsetPosition,
                     behavior: "smooth"
                 });
                 
-                // 모바일에서는 메뉴 닫기
+                // 모바일에서는 메뉴 클릭 후 사이드바 닫기
                 if (this.isMobile) {
                     this.isCollapsed = true;
                     const toggleButton = document.getElementById('sidebar-toggle');
@@ -216,12 +207,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 8000);
     
     // 토글 버튼 이벤트 리스너 추가
-    const toggleButton = document.getElementById('sidebar-toggle');
-    if (toggleButton) {
-        toggleButton.addEventListener('click', function() {
-            const sidebar = document.getElementById('sidebar');
-            sidebar.classList.toggle('expanded');
-            this.classList.toggle('active');
-        });
-    }
+    // const toggleButton = document.getElementById('sidebar-toggle');
+    // if (toggleButton) {
+    //     toggleButton.addEventListener('click', function() {
+    //         const sidebar = document.getElementById('sidebar');
+    //         sidebar.classList.toggle('expanded');
+    //         this.classList.toggle('active');
+    //     });
+    // }
 });

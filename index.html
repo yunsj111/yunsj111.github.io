@@ -11,6 +11,20 @@
 </head>
 
 <body>
+    <div id="loading-overlay">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <div class="progress-container">
+                <div class="progress-bar"></div>
+            </div>
+            <p>Loading resources...</p>
+        </div>
+    </div>
+
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <span></span>
+    </button>
+
     <header>
         <div class="header-bg"></div>
         <div class="header-content">
@@ -22,9 +36,14 @@
     </header>
 
 <div class="container">
-    <nav class="sidebar" :class="{ collapsed: isCollapsed }" id="sidebar"
+    
+    <nav class="sidebar" :class="{ collapsed: isCollapsed, expanded: isMobile && !isCollapsed }" id="sidebar" @mouseenter="isCollapsed = false" @mouseleave="isCollapsed = true">
+        <ul v-show="!isCollapsed || (isMobile && !isCollapsed)">
+
+
+    <!-- <nav class="sidebar" :class="{ collapsed: isCollapsed }" id="sidebar"
         @mouseenter="isCollapsed = false" @mouseleave="isCollapsed = true">
-        <ul v-show="!isCollapsed">
+        <ul v-show="!isCollapsed"> -->
             <li><a href="#education" @click="scrollToSection('education')">Education</a></li>
             <li><a href="#training" @click="scrollToSection('training')">Professional Training</a></li>
             <li><a href="#career" @click="scrollToSection('career')">Career History</a></li>

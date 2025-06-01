@@ -49,6 +49,10 @@ new Vue({
                     }
                 }
             }
+        },
+        // 새로운 메서드: Education Card를 클릭했을 때 Professional Projects로 스크롤
+        educationCardClick() {
+            this.scrollToSection('projects');
         }
     }
 });

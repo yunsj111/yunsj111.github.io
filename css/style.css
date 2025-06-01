@@ -5,6 +5,62 @@ body {
     background: linear-gradient(90deg, #d5e9d6 0%, #2a612d 100%);
 }
 
+*{
+    cursor: url('../source/hi098123-cur-output.cur'), auto; /* 커서 이미지 경로 변경 */
+}
+
+/* 커서 애니메이션 정의 */
+@keyframes cursor-change {
+    0%, 45% {
+        cursor: url('../source/hi098123-cur-output-bright.cur'), auto;
+    }
+    50%, 95% {
+        cursor: url('../source/hi098123-cur-output.cur'), auto;
+    }
+    100% {
+        cursor: url('../source/hi098123-cur-output-bright.cur'), auto;
+    }
+}
+
+
+/* 프로젝트 카드에 마우스 올릴 때 노란색 커서로 변경 - 모든 내부 요소 포함 */
+.education-card:hover,
+.education-card:hover *,
+.education-card:hover .project-icon,
+.education-card:hover img,
+.education-card:hover h3,
+.education-card:hover p {
+    animation: cursor-change 1s infinite;
+}
+
+/* 프로젝트 링크가 있는 카드도 동일하게 적용 */
+.education-card a.project-link:hover,
+.education-card a.project-link:hover *,
+.education-card a.project-link:hover img,
+.education-card a.project-link:hover h3,
+.education-card a.project-link:hover p {
+    animation: cursor-change 1s infinite;
+}
+
+/* 프로젝트 카드에 마우스 올릴 때 노란색 커서로 변경 - 모든 내부 요소 포함 */
+.project-card:hover,
+.project-card:hover *,
+.project-card:hover .project-icon,
+.project-card:hover img,
+.project-card:hover h3,
+.project-card:hover p {
+    animation: cursor-change 1s infinite;
+}
+
+/* 프로젝트 링크가 있는 카드도 동일하게 적용 */
+.project-card a.project-link:hover,
+.project-card a.project-link:hover *,
+.project-card a.project-link:hover img,
+.project-card a.project-link:hover h3,
+.project-card a.project-link:hover p {
+    animation: cursor-change 1s infinite;
+}
+
 /* 로딩 오버레이 스타일 */
 #loading-overlay {
     position: fixed;
@@ -115,16 +171,15 @@ header p {
     margin: 0.5rem 0;
     color: #fff;
     text-shadow: 0 2px 16px rgba(0,0,0,0.6);
-    font-size: 1.2rem;
-}
-
-/* 메인 콘텐츠 영역 */
-.container {
-    display: flex;
-    min-height: 70vh;
-    align-items: stretch;
-    justify-content: flex-start;
-    padding-left: 200px; /* 사이드바 너비만큼 */
+    font-size: 1.2rem;lass="project-card">
+                <a href="projects/wedding-rain-predictor.html" class="project-link" onclick="saveScrollPosition()">
+                    <div class="project-image">
+                        <img src="source/wedding-rain.png" alt="Weather Analysis">
+                    </div>
+                    <h3>Wedding Day Rain Predictor</h3>
+                    <p>Statistical analysis of historical rainfall patterns for outdoor wedding planning</p>
+                </a>
+            </div>
     width: 100%;
     box-sizing: border-box;
     position: relative;

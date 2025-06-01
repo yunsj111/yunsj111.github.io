@@ -1,4 +1,3 @@
-// Vue 인스턴스
 new Vue({
     el: '.container',
     data: {
@@ -15,6 +14,9 @@ new Vue({
         if (toggleButton) {
             toggleButton.addEventListener('click', this.toggleSidebar);
         }
+        
+        // project-card에 클릭 이벤트 추가
+        this.addClickToProjectCards();
     },
     methods: {
         checkScreenSize() {
@@ -50,9 +52,37 @@ new Vue({
                 }
             }
         },
-        // 새로운 메서드: Education Card를 클릭했을 때 Professional Projects로 스크롤
         educationCardClick() {
             this.scrollToSection('projects');
+        },
+        // 새로운 메서드: project-card에 클릭 이벤트 추가
+        addClickToProjectCards() {
+            const projectCards = document.querySelectorAll('.project-card');
+            
+            projectCards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    // 이미 링크를 클릭한 경우는 제외 (중복 이벤트 방지)
+                    if (e.target.closest('a.project-link') || e.target.tagName === 'A') {
+                        return;
+                    }
+                    
+                    // 카드 내의 project-link 찾기
+                    const projectLink = card.querySelector('a.project-link');
+                    
+                    // 링크가 있으면 해당 링크로 이동
+                    if (projectLink) {
+                        saveScrollPosition();
+                        window.location.href = projectLink.href;
+                    }
+                });
+                
+                // 링크가 있는 카드에만 포인터 커서와 시각적 힌트 추가
+                const hasLink = card.querySelector('a.project-link');
+                if (hasLink) {
+                    card.style.cursor = 'pointer';
+                    card.classList.add('has-link');
+                }
+            });
         }
     }
 });

@@ -61,6 +61,33 @@ body {
     animation: cursor-change 1s infinite;
 }
 
+/* project-card 클릭 가능함을 시각적으로 표시 */
+.project-card.has-link {
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card.has-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* 클릭 가능함을 알려주는 작은 아이콘이나 힌트 (선택사항) */
+.project-card.has-link::after {
+    content: "Go→";
+    position: absolute;
+    bottom: 0px;
+    right: 15px;
+    font-size: 20px;
+    color: #2a612d;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-card.has-link:hover::after {
+    opacity: 1;
+}
+
 /* 로딩 오버레이 스타일 */
 #loading-overlay {
     position: fixed;
@@ -179,7 +206,7 @@ header p {
                     <h3>Wedding Day Rain Predictor</h3>
                     <p>Statistical analysis of historical rainfall patterns for outdoor wedding planning</p>
                 </a>
-            </div>
+            </div>;
     width: 100%;
     box-sizing: border-box;
     position: relative;

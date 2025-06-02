@@ -17,6 +17,14 @@ new Vue({
         
         // project-card에 클릭 이벤트 추가
         this.addClickToProjectCards();
+        
+        // 뒤로가기로 돌아왔을 때 스크롤 위치 복원
+        if (performance.navigation.type === 2 || window.history.state?.scrollPos) {
+            const scrollPos = window.history.state?.scrollPos || 0;
+            setTimeout(() => {
+                window.scrollTo(0, scrollPos);
+            }, 200);
+        }
     },
     methods: {
         checkScreenSize() {
@@ -71,7 +79,11 @@ new Vue({
                     
                     // 링크가 있으면 해당 링크로 이동
                     if (projectLink) {
-                        saveScrollPosition();
+                        // 현재 스크롤 위치를 history state에 저장
+                        const scrollPosition = window.pageYOffset;
+                        history.replaceState({ scrollPos: scrollPosition }, document.title);
+                        
+                        // 새 페이지로 이동
                         window.location.href = projectLink.href;
                     }
                 });
@@ -87,19 +99,43 @@ new Vue({
     }
 });
 
-// 스크롤 위치 저장 및 복원 함수
-function saveScrollPosition() {
-    sessionStorage.setItem('scrollPosition', window.pageYOffset);
-}
 
-function returnToSavedPosition() {
-    event.preventDefault();
-    const savedPosition = sessionStorage.getItem('scrollPosition') || 0;
-    window.location.href = "../index.html?scroll=" + savedPosition;
+// header용 Vue 인스턴스 추가
+document.addEventListener('DOMContentLoaded', function() {
+    // project-header가 존재할 때만 Vue 인스턴스 생성
+    if (document.querySelector('.project-header')) {
+        new Vue({
+            el: '.project-header'
+        });
+    }
+    
+    // 기존 container Vue 인스턴스는 유지
+    // ...
+});
+
+// returnToSavedPosition 함수를 History API 방식으로 변경
+function handleBackNavigation(e) {
+    e.preventDefault();
+    // 현재 스크롤 위치를 history state에 저장
+    const currentScrollPos = window.pageYOffset;
+    history.replaceState({ scrollPos: currentScrollPos }, document.title);
+    
+    // 뒤로가기 실행
+    history.back();
 }
 
 // 단일 DOMContentLoaded 이벤트 핸들러
 document.addEventListener('DOMContentLoaded', function() {
+    // URL에서 스크롤 파라미터 확인 제거 (History API로 대체)
+    
+    // 페이지 이동 전에 현재 스크롤 위치 저장
+    window.addEventListener('beforeunload', function() {
+        if (!window.history.state) {
+            const scrollPos = window.pageYOffset;
+            history.replaceState({ scrollPos: scrollPos }, document.title);
+        }
+    });
+
     const loadingOverlay = document.getElementById('loading-overlay');
     const progressBar = document.querySelector('.progress-bar');
     const loadingText = document.querySelector('.loading-content p');
@@ -249,4 +285,22 @@ document.addEventListener('DOMContentLoaded', function() {
     //         this.classList.toggle('active');
     //     });
     // }
+});
+
+// 페이지 로드 시 저장된 스크롤 위치 복원
+window.addEventListener('load', function() {
+    // popstate 이벤트는 뒤로가기/앞으로가기 버튼 클릭 시 발생
+    window.addEventListener('popstate', function(e) {
+        if (e.state && e.state.scrollPos) {
+            // 약간의 지연 후 스크롤 위치 복원 (DOM이 완전히 로드된 후)
+            setTimeout(() => {
+                window.scrollTo(0, e.state.scrollPos);
+            }, 200);
+        }
+    });
+    
+    // 페이지 첫 로드 시 현재 스크롤 위치(0,0)를 history state에 저장
+    if (!history.state) {
+        history.replaceState({ scrollPos: 0 }, document.title);
+    }
 });

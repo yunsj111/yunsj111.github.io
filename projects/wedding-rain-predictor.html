@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/project-detail.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="../js/components.js"></script>
+    <script src="https://cdn.plot.ly/plotly-3.0.1.min.js" charset="utf-8"></script>
 </head>
 
 <body>
@@ -21,33 +22,33 @@
         </div>
     </div>
 
-    <!-- <button class="sidebar-toggle" id="sidebar-toggle">
+    <button class="sidebar-toggle" id="sidebar-toggle">
         <span></span>
-    </button> -->
+    </button>
 
     <header class="project-header">
         <div class="header-bg" style="background: url('../source/wedding-rain.png') center center/cover no-repeat;"></div>
         <div class="header-content">
             <h1>Wedding Day Rain Predictor</h1>
             <p>Statistical analysis of historical rainfall patterns for outdoor wedding planning</p>
-            <a href="../index.html" class="back-button" onclick="returnToSavedPosition()">← Back to Portfolio</a>
+            <back-button text="← Back to Portfolio"></back-button>
         </div>
     </header>
-
+    
     <div class="container" id="app">
-        <nav class="sidebar" :class="{ collapsed: isCollapsed, expanded: isMobile && !isCollapsed }" id="sidebar" @mouseenter="isCollapsed = false" @mouseleave="isCollapsed = true">
+        <nav class="project-sidebar" :class="{ collapsed: isCollapsed, expanded: isMobile && !isCollapsed }" id="sidebar" @mouseenter="isCollapsed = false" @mouseleave="isCollapsed = true">
             <ul v-show="!isCollapsed || (isMobile && !isCollapsed)">
                 <li><a href="#overview" @click="scrollToSection('overview')">Overview</a></li>
                 <li><a href="#methodology" @click="scrollToSection('methodology')">Methodology</a></li>
                 <li><a href="#data-analysis" @click="scrollToSection('data-analysis')">Data Analysis</a></li>
                 <li><a href="#results" @click="scrollToSection('results')">Results</a></li>
                 <li><a href="#conclusions" @click="scrollToSection('conclusions')">Conclusions</a></li>
-                <li><a href="../index.html">Main Portfolio</a></li>
+                <back-button text="Main Portfolio"></back-button>
             </ul>
         </nav>
         
         <main>
-            <div id="overview" class="section">
+            <div id="overview">
                 <h2>Project Overview</h2>
                 <div class="content-card">
                     <p>The Wedding Day Rain Predictor is a personal project inspired by my own wedding planning experience. Having planned an outdoor wedding ceremony, I was acutely aware that rainfall could significantly disrupt our special day. This motivated me to develop a data-driven tool designed to help couples planning outdoor weddings make informed decisions based on historical rainfall patterns. Using 30 years of meteorological data, this project analyzes seasonal trends, geographical variations, and probability distributions to provide actionable insights for wedding planning. The analysis helps couples identify optimal dates and times with the lowest likelihood of precipitation, turning weather uncertainty into a manageable planning factor.</p>
@@ -55,19 +56,19 @@
                     <div class="project-highlights">
                         <div class="highlight-item">
                             <div class="highlight-icon">
-                                <img src="../source/icons/calendar.svg" alt="Calendar">
+                                <!-- <img src="../source/icons/calendar.svg" alt="Calendar"> -->
                             </div>
                             <span>Completed: December 2023</span>
                         </div>
                         <div class="highlight-item">
                             <div class="highlight-icon">
-                                <img src="../source/icons/tools.svg" alt="Tools">
+                                <!-- <img src="../source/icons/tools.svg" alt="Tools"> -->
                             </div>
                             <span>Python, Pandas, Matplotlib, Scikit-learn</span>
                         </div>
                         <div class="highlight-item">
                             <div class="highlight-icon">
-                                <img src="../source/icons/data.svg" alt="Data">
+                                <!-- <img src="../source/icons/data.svg" alt="Data"> -->
                             </div>
                             <span>30+ years of meteorological data</span>
                         </div>
@@ -75,7 +76,7 @@
                 </div>
             </div>
 
-            <div id="methodology" class="section">
+            <div id="methodology">
                 <h2>Methodology</h2>
                 <div class="content-card">
                     <h3>Data Collection</h3>
@@ -98,7 +99,7 @@
                 </div>
             </div>
 
-            <div id="data-analysis" class="section">
+            <div id="data-analysis">
                 <h2>Data Analysis</h2>
                 <div class="content-card">
                     <div class="visualization-container">
@@ -115,7 +116,7 @@
                 </div>
             </div>
             
-            <div id="results" class="section">
+            <div id="results">
                 <h2>Results</h2>
                 <div class="content-card">
                     <h3>Key Findings</h3>
@@ -150,7 +151,7 @@
                 </div>
             </div>
             
-            <div id="conclusions" class="section">
+            <div id="conclusions">
                 <h2>Conclusions</h2>
                 <div class="content-card">
                     <p>The Wedding Day Rain Predictor project demonstrates how historical weather data can be leveraged to optimize outdoor event planning. By analyzing decades of rainfall patterns, we've created a framework that helps couples identify optimal wedding dates and times based on statistical probability rather than folklore or guesswork.</p>
@@ -164,7 +165,9 @@
                     
                     <!-- 하단의 Back 링크도 수정 -->
                     <div class="project-footer">
-                        <a href="../index.html" class="back-button" onclick="returnToSavedPosition()">← Back to Portfolio</a>
+                        <!-- <a href="../index.html" class="back-button" onclick="returnToSavedPosition()">← Back to Portfolio</a> -->
+                        
+                        <back-button text="← Back to Portfolio"></back-button>
                         <a href="#" class="button primary-button">View on GitHub</a>
                     </div>
                 </div>
@@ -176,7 +179,7 @@
         <p>&copy; 2025 Seokjin Glen Yun</p>
     </footer>
 
-    <script src="../js/script.js"></script>
+
     <script>
         // Visualization scripts for the charts
         document.addEventListener('DOMContentLoaded', function() {
@@ -273,55 +276,58 @@
             Plotly.newPlot('rain-probability-chart', rainProbData, layout2, {responsive: true});
         });
         
-        // Vue instance for the page
-        new Vue({
-            el: '#app',
-            data: {
-                isCollapsed: true,
-                isMobile: window.innerWidth <= 768
-            },
-            mounted() {
-                window.addEventListener('resize', this.checkScreenSize);
-                const toggleButton = document.getElementById('sidebar-toggle');
-                if (toggleButton) {
-                    toggleButton.addEventListener('click', this.toggleSidebarMobile);
-                }
-            },
-            methods: {
-                checkScreenSize() {
-                    this.isMobile = window.innerWidth <= 768;
-                },
-                toggleSidebarMobile() {
-                    this.isCollapsed = !this.isCollapsed;
-                    const toggleButton = document.getElementById('sidebar-toggle');
-                    if (toggleButton) {
-                        toggleButton.classList.toggle('active', !this.isCollapsed);
-                    }
-                },
-                scrollToSection(sectionId) {
-                    event.preventDefault();
-                    const element = document.getElementById(sectionId);
-                    if (element) {
-                        const headerOffset = 70;
-                        const elementPosition = element.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        // // Vue instance for the page
+        // new Vue({
+        //     el: '#app',
+        //     data: {
+        //         isCollapsed: true,
+        //         isMobile: window.innerWidth <= 768
+        //     },
+        //     mounted() {
+        //         window.addEventListener('resize', this.checkScreenSize);
+        //         const toggleButton = document.getElementById('sidebar-toggle');
+        //         if (toggleButton) {
+        //             toggleButton.addEventListener('click', this.toggleSidebarMobile);
+        //         }
+        //     },
+        //     methods: {
+        //         checkScreenSize() {
+        //             this.isMobile = window.innerWidth <= 768;
+        //         },
+        //         toggleSidebarMobile() {
+        //             this.isCollapsed = !this.isCollapsed;
+        //             const toggleButton = document.getElementById('sidebar-toggle');
+        //             if (toggleButton) {
+        //                 toggleButton.classList.toggle('active', !this.isCollapsed);
+        //             }
+        //         },
+        //         scrollToSection(sectionId) {
+        //             event.preventDefault();
+        //             const element = document.getElementById(sectionId);
+        //             if (element) {
+        //                 const headerOffset = 70;
+        //                 const elementPosition = element.getBoundingClientRect().top;
+        //                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
                         
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: "smooth"
-                        });
+        //                 window.scrollTo({
+        //                     top: offsetPosition,
+        //                     behavior: "smooth"
+        //                 });
                         
-                        if (this.isMobile) {
-                            this.isCollapsed = true;
-                            const toggleButton = document.getElementById('sidebar-toggle');
-                            if (toggleButton) {
-                                toggleButton.classList.remove('active');
-                            }
-                        }
-                    }
-                }
-            }
-        });
+        //                 if (this.isMobile) {
+        //                     this.isCollapsed = true;
+        //                     const toggleButton = document.getElementById('sidebar-toggle');
+        //                     if (toggleButton) {
+        //                         toggleButton.classList.remove('active');
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     }
+        // });
     </script>
+
+
+    <script src="../js/script.js"></script>
 </body>
 </html>

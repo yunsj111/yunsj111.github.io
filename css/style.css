@@ -6,21 +6,21 @@ body {
 }
 
 *{
-    cursor: url('../source/hi098123-cur-output.cur'), auto; /* 커서 이미지 경로 변경 */
+    cursor: url('../source/hi098123-cur-output.cur') 0 0,auto; /* 커서 이미지 경로 변경 */
 }
 
 /* 커서 애니메이션 정의 */
 @keyframes cursor-change {
     0%, 45% {
-        cursor: url('../source/hi098123-cur-output-bright.cur'), auto;
+        cursor: url('../source/hi098123-cur-output-bright.cur') 0 17.1, auto;
     }
     50%, 95% {
-        cursor: url('../source/hi098123-cur-output.cur'), auto;
+        cursor: url('../source/hi098123-cur-output.cur') 0 0, auto;
     }
     100% {
-        cursor: url('../source/hi098123-cur-output-bright.cur'), auto;
+        cursor: url('../source/hi098123-cur-output-bright.cur') 0 17.1, auto;
     }
-}
+}   
 
 
 /* 프로젝트 카드에 마우스 올릴 때 노란색 커서로 변경 - 모든 내부 요소 포함 */
@@ -198,15 +198,7 @@ header p {
     margin: 0.5rem 0;
     color: #fff;
     text-shadow: 0 2px 16px rgba(0,0,0,0.6);
-    font-size: 1.2rem;lass="project-card">
-                <a href="projects/wedding-rain-predictor.html" class="project-link" onclick="saveScrollPosition()">
-                    <div class="project-image">
-                        <img src="source/wedding-rain.png" alt="Weather Analysis">
-                    </div>
-                    <h3>Wedding Day Rain Predictor</h3>
-                    <p>Statistical analysis of historical rainfall patterns for outdoor wedding planning</p>
-                </a>
-            </div>;
+    font-size: 1.2rem;
     width: 100%;
     box-sizing: border-box;
     position: relative;

@@ -45,7 +45,6 @@
     align-items: center;
     background-color: rgba(32, 51, 48, 0.288);
     backdrop-filter: blur(3px);
-    padding: 2rem;
 }
 
 .project-header h1 {

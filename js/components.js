@@ -1,3 +1,44 @@
+// 경력 카드 컴포넌트
+Vue.component('education-card', {
+    props: {
+        title: {
+            type: String,
+            required: true
+        },
+        institution: {
+            type: String,
+            required: true
+        },
+        period: {
+            type: String,
+            required: true
+        },
+        thesis: {
+            type: String,
+            default: ''
+        },
+        projects: {
+            type: Array,
+            default: function() { return []; }
+        }
+    },
+    template: `
+        <div class="education-card">
+            <h3>{{ title }}</h3>
+            <span class="period">{{ institution }} ({{ period }})</span>
+            <p class="thesis" v-if="thesis">Thesis: {{ thesis }}</p>
+            <template v-if="projects && projects.length > 0">
+                <h4 class="project">Projects:</h4>
+                <ul>
+                    <li v-for="project in projects">{{ project }}</li>
+                </ul>
+            </template>
+            <slot></slot>
+        </div>
+    `
+});
+
+
 // 프로젝트 카드 컴포넌트
 Vue.component('project-card', {
     props: {

@@ -23,41 +23,17 @@ body {
 }   
 
 
-/* 프로젝트 카드에 마우스 올릴 때 노란색 커서로 변경 - 모든 내부 요소 포함 */
-.education-card:hover,
-.education-card:hover *,
-.education-card:hover .project-icon,
-.education-card:hover img,
-.education-card:hover h3,
-.education-card:hover p {
-    animation: cursor-change 1s infinite;
-}
-
-/* 프로젝트 링크가 있는 카드도 동일하게 적용 */
-.education-card a.project-link:hover,
-.education-card a.project-link:hover *,
-.education-card a.project-link:hover img,
-.education-card a.project-link:hover h3,
-.education-card a.project-link:hover p {
-    animation: cursor-change 1s infinite;
-}
-
-/* 프로젝트 카드에 마우스 올릴 때 노란색 커서로 변경 - 모든 내부 요소 포함 */
-.project-card:hover,
-.project-card:hover *,
-.project-card:hover .project-icon,
-.project-card:hover img,
-.project-card:hover h3,
-.project-card:hover p {
-    animation: cursor-change 1s infinite;
-}
-
-/* 프로젝트 링크가 있는 카드도 동일하게 적용 */
-.project-card a.project-link:hover,
-.project-card a.project-link:hover *,
-.project-card a.project-link:hover img,
-.project-card a.project-link:hover h3,
-.project-card a.project-link:hover p {
+/* 커서 애니메이션을 클릭 가능한 요소들에 통합 적용 */
+.project-card:hover, 
+/* .education-card:hover, */
+.project-card:hover *, 
+/* .education-card:hover *, */
+a:hover,
+a:hover *,
+button:hover,
+input[type="submit"]:hover,
+[role="button"]:hover,
+[role="button"]:hover * {
     animation: cursor-change 1s infinite;
 }
 
@@ -524,11 +500,11 @@ main > div h2::after {
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.education-card:hover {
+/* .education-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 30px rgba(0, 0, 0, 0.8);
     background: rgba(255, 255, 255, 0.8);
-}
+} */
 
 
 .education-card h3 {
@@ -558,11 +534,14 @@ main > div h2::after {
 
 .education-card .thesis {
     font-weight: 600;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid #eee;
 }
 
+.education-card .project {
+    font-weight: 600;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #00000052;
+}
 .education-card ul {
     padding-left: 1.5rem;
     margin-top: 0.5rem;

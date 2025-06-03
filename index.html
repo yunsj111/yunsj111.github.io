@@ -51,165 +51,179 @@
             <main>
                 <div id="education">
                     <h2>Education</h2>
-            
-                    <div class="education-card" v-on:click="educationCardClick">
-                        <h3>Ph.D in Materials Science and Engineering</h3>
-                        <span class="period">Korea University (2013.03-2018.02)</span>
-                        <p class="thesis">Thesis: SOT-MRAM Fabrication & Micromagnetic Simulation</p>
-                        <h4>Research Projects:</h4>
-                        <ul>
-                            <li>Development of magmatic multilayers for high density spin devices</li>
-                            <li>Spin-Orbitronic Materials Discovery for Logic-in-Memory</li>
-                            <li>Development of GPU-Accelerated Micromagnetic Simulator</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="education-card" v-on:click="educationCardClick">
-                        <h3>B.S. in Materials Science and Engineering</h3>
-                        <span class="period">Korea University (2009.03-2013.02)</span>
-                    </div>
-                </div>
-                <div id="training"><h2>Professional Training</h2>
-                    <div class="education-card" v-on:click="educationCardClick">
-                        <h3>Full-time Master’s Degree Program, LG AI Graduate School</h3>
-                        <span class="period">LG AI Research (2021.03-2021.12)</span>
-                        <p class="thesis">Thesis: Instance Segmentation & Object Detection</p>
-                        <h4>Research Projects:</h4>
-                        <ul>
-                            <li>Tracking and Segmenttion for Swelling Behavior of Multiple SAP particles</li>
-                        </ul>
-                    </div>
 
-                    <div class="education-card" v-on:click="educationCardClick">
-                        <h3>AI Core Talent Training Program, DX Industry-Academic Cooperation Center</h3>
-                        <span class="period">Seoul National University (2020.12-2021.02)</span>
-                    </div>
+                    <education-card 
+                        title="Ph.D in Materials Science and Engineering"
+                        institution="Korea University"
+                        period="2013.03-2018.02"
+                        thesis="SOT-MRAM Fabrication & Micromagnetic Simulation"
+                        :projects="[
+                            'Development of magmatic multilayers for high density spin devices',
+                            'Spin-Orbitronic Materials Discovery for Logic-in-Memory',
+                            'Development of GPU-Accelerated Micromagnetic Simulator'
+                        ]">
+                    </education-card>
+
+                    <education-card 
+                        title="B.S. in Materials Science and Engineering"
+                        institution="Korea University"
+                        period="2009.03-2013.02">
+                    </education-card>
+                        
                 </div>
+
+                <div id="training"><h2>Professional Training</h2>
+                    
+                    <education-card 
+                        title="Full-time Master’s Degree Program, LG AI Graduate School"
+                        institution="LG AI Research"
+                        period="2021.03-2021.12"
+                        thesis="Instance Segmentation & Object Detection"
+                        :projects="[
+                            'Tracking and Segmenttion for Swelling Behavior of Multiple SAP particles'
+                        ]">
+                    </education-card>
+                    
+                    <education-card 
+                        title="AI Core Talent Training Program, DX Industry-Academic Cooperation Center"
+                        institution="Seoul National University"
+                        period="2020.12-2021.02">
+                    </education-card>
+                    
+
+                </div>
+
                 <div id="career"><h2>Career History</h2>
                 
-                
-                    <div class="education-card" v-on:click="educationCardClick">
-                            <h3>Part Leader</h3>
-                            <span class="period">AI Part, Petrochemical Business Headquarters, LG Chem (2025.01-Present)</span>
-                            <h4>Projects:</h4>
-                            <ul>
-                                <li>Development of AI scheduler for NCC naphtha feedstock operations</li>
-                                <li>Development of Multi-objective optimization dashboard for VCM cracker coil coking and operating cost reduction</li>
-                                <li>Development of customer solution document AI search system</li>
-                            </ul>
-                    </div>
+                    <education-card 
+                        title="Part Leader"
+                        institution="AI Part, Petrochemical Business Headquarters, LG Chem"
+                        period="2025.01-Present"
+                        :projects="[
+                            'Development of AI scheduler for NCC naphtha feedstock operations',
+                            'Development of Multi-objective optimization dashboard for VCM cracker coil coking and operating cost reduction',
+                            'Development of customer solution document AI search system'
+                        ]">
+                    </education-card>
                     
-                    <div class="education-card" v-on:click="educationCardClick">
-                            <h3>Team Leader</h3>
-                            <span class="period">DX Team, Petrochemical Laboratory, LG Chem (2022.07-2024.12)</span>
-                            <h4>Projects:</h4>
-                            <ul>
-                                <li>Development of AI material discovery models and framework</li>
-                                <li>Development of R&D document LLM chatbot</li>
-                                <li>Multivariate regression for polymer material properties</li>
-                                <li>Quantification and automation of sensory QA processes</li>
-                            </ul>
-                    </div>
+                    <education-card 
+                        title="Team Leader"
+                        institution="DX Team, Petrochemical Laboratory, LG Chem"
+                        period="2022.07-2024.12"
+                        :projects="[
+                            'Development of AI material discovery models and framework',
+                            'Development of R&D document LLM chatbot',
+                            'Multivariate regression for polymer material properties',
+                            'Quantification and automation of sensory QA processes'
+                        ]">
+                    </education-card>
+                    <education-card 
+                        title="Senior Researcher"
+                        institution="DX Team, Petrochemical Laboratory, LG Chem"
+                        period="2020.01-2022.07"
+                        :projects="[
+                            'Multivariate regression for polymer material properties',
+                            'Quantification and automation of sensory QA process',
+                            'Development of AutoML library'
+                        ]">
+                    </education-card>
+                    <education-card 
+                        title="Senior Researcher"
+                        institution="AFM PJT, Fundamental Material Laboratory, LG Chem"
+                        period="2019.01-2019.12"
+                        :projects="[
+                            'Development of magnetic ferrite materials',
+                            'Development of magnetic field induced molding process'
+                        ]">
+                    </education-card>
 
-                    <div class="education-card" v-on:click="educationCardClick">
-                            <h3>Senior Researcher</h3>
-                            <span class="period">DX Team, Petrochemical Laboratory, LG Chem (2020.01-2022.07)</span>
-                            <h4>Projects:</h4>
-                            <ul>
-                                <li>Multivariate regression for polymer material properties</li>
-                                <li>Quantification and automation of sensory QA process</li>
-                                <li>Development of AutoML library</li>
-                            </ul>
-                    </div>
-
-                    <div class="education-card" v-on:click="educationCardClick">
-                            <h3>Senior Researcher</h3>
-                            <span class="period">AFM PJT, Fundamental Material Laboratory, LG Chem (2019.01-2019.12)</span>
-                            <h4>Projects:</h4>
-                            <ul>
-                                <li>Development of magnetic ferrite materials</li>
-                                <li>Development of magnetic field induced molding process</li>
-                            </ul>
-                    </div>
-
-                    <div class="education-card" v-on:click="educationCardClick">
-                            <h3>Postdoctoral fellow</h3>
-                            <span class="period">Nano Spintronics Laboratory, KAIST (2018.04-2018.12)</span>
-                            <h4>Projects:</h4>
-                            <ul>
-                                <li>Spin-Orbitronic Materials Discovery for Logic-in-Memory</li>
-                            </ul>
-                    </div>
+                    <education-card 
+                        title="Postdoctoral fellow"
+                        institution="Nano Spintronics Laboratory, KAIST"
+                        period="2018.04-2018.12"
+                        :projects="[
+                            'Spin-Orbitronic Materials Discovery for Logic-in-Memory'
+                        ]">
+                    </education-card>
                 
                 </div>
+
                 <div id="projects"><h2>Professional Projects</h2>
                 
                     <div class="project-grid">
-                        <!-- 1행 -->
-                        <div class="project-card">
-                            <div class="project-icon">
-                                <!-- <img src="source/icons/ai-model.svg" alt="AI Model"> -->
-                            </div>
-                            <h3>AI Material Discovery</h3>
-                            <p>Machine learning framework for accelerated polymer development</p>
-                        </div>
-                            
-                        <div class="project-card">
-                            <div class="project-icon">
-                                <!-- <img src="source/icons/chatbot.svg" alt="Chatbot"> -->
-                            </div>
-                            <h3>R&D Document Chatbot</h3>
-                            <p>LLM-powered search system for technical documents</p>
-                        </div>
-                            
-                        <div class="project-card">
-                            <div class="project-icon">
-                                <!-- <img src="source/icons/dashboard.svg" alt="Dashboard"> -->
-                            </div>
-                            <h3>Multi-objective Optimization</h3>
-                            <p>Interactive dashboard for VCM cracker optimization</p>
-                        </div>
-                            
-                        <div class="project-card">
-                            <div class="project-icon">
-                                <!-- <img src="source/icons/scheduler.svg" alt="Scheduler"> -->
-                            </div>
-                            <h3>AI Scheduler</h3>
-                            <p>ML model for naphtha feedstock operations</p>
-                        </div>
-                            
-                        <!-- 2행 -->
-                        <div class="project-card">
-                            <div class="project-icon">
-                                <!-- <img src="source/icons/automl.svg" alt="AutoML"> -->
-                            </div>
-                            <h3>AutoML Library</h3>
-                            <p>Custom automated machine learning pipeline</p>
-                        </div>
                         
-                        <div class="project-card">
-                            <div class="project-icon">
-                                <!-- <img src="source/icons/qa.svg" alt="QA"> -->
-                            </div>
-                            <h3>QA Automation</h3>
-                            <p>Computer vision for sensory quality assessment</p>
-                        </div>
+                        <project-card
+                            title="Under preparation"
+                            description="Under preparation"
+                            img-src=""
+                            img-alt="Under preparation"
+                            link-url="Under preparation"
+                            :has-link="false">
+                        </project-card>
+                            
+                        <project-card
+                            title="Under preparation"
+                            description="Under preparation"
+                            img-src=""
+                            img-alt="Under preparation"
+                            link-url="Under preparation"
+                            :has-link="false">
+                        </project-card>
+                            
+                        <project-card
+                            title="Under preparation"
+                            description="Under preparation"
+                            img-src=""
+                            img-alt="Under preparation"
+                            link-url="Under preparation"
+                            :has-link="false">
+                        </project-card>
+                            
+                        <project-card
+                            title="Under preparation"
+                            description="Under preparation"
+                            img-src=""
+                            img-alt="Under preparation"
+                            link-url="Under preparation"
+                            :has-link="false">
+                        </project-card>
+                            
+                        <project-card
+                            title="Under preparation"
+                            description="Under preparation"
+                            img-src=""
+                            img-alt="Under preparation"
+                            link-url="Under preparation"
+                            :has-link="false">
+                        </project-card>
                         
-                        <div class="project-card">
-                            <div class="project-icon">
-                                <!-- <img src="source/icons/regression.svg" alt="Regression"> -->
-                            </div>
-                            <h3>Polymer Properties Prediction</h3>
-                            <p>Multivariate regression models for material science</p>
-                        </div>
+                        <project-card
+                            title="Under preparation"
+                            description="Under preparation"
+                            img-src=""
+                            img-alt="Under preparation"
+                            link-url="Under preparation"
+                            :has-link="false">
+                        </project-card>
                         
-                        <div class="project-card">
-                            <div class="project-icon">
-                                <!-- <img src="source/icons/magnetic.svg" alt="Magnetic"> -->
-                            </div>
-                            <h3>Magnetic Materials</h3>
-                            <p>Development of advanced magnetic ferrite materials</p>
-                        </div>
+                        <project-card
+                            title="Under preparation"
+                            description="Under preparation"
+                            img-src=""
+                            img-alt="Under preparation"
+                            link-url="Under preparation"
+                            :has-link="false">
+                        </project-card>
+                        
+                        <project-card
+                            title="Under preparation"
+                            description="Under preparation"
+                            img-src=""
+                            img-alt="Under preparation"
+                            link-url="Under preparation"
+                            :has-link="false">
+                        </project-card>
+                    
                     </div>
                 </div>
 
@@ -219,7 +233,7 @@
 
                         <!-- 1행 -->
                         <project-card
-                            title="Wedding Day Rain Predictor2"
+                            title="Wedding Day Rain Predictor"
                             description="Statistical analysis of historical rainfall patterns for outdoor wedding planning"
                             img-src="source/wedding-rain.png"
                             img-alt="Weather Analysis"
@@ -228,12 +242,12 @@
                         </project-card>
 
                         <project-card
-                            title="Wedding Day Rain Predictor2"
-                            description="Statistical analysis of historical rainfall patterns for outdoor wedding planning"
-                            img-src="source/wedding-rain.png"
-                            img-alt="Weather Analysis"
-                            link-url="projects/wedding-rain-predictor.html"
-                            :has-link="true">
+                            title="Under preparation"
+                            description="Under preparation"
+                            img-src=""
+                            img-alt="Under preparation"
+                            link-url="Under preparation"
+                            :has-link="false">
                         </project-card>
 
 

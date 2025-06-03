@@ -60,9 +60,7 @@ new Vue({
                 }
             }
         },
-        educationCardClick() {
-            this.scrollToSection('projects');
-        },
+
         // 새로운 메서드: project-card에 클릭 이벤트 추가
         addClickToProjectCards() {
             const projectCards = document.querySelectorAll('.project-card');

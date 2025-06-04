@@ -3,6 +3,15 @@ html {
     font-size: 24px; /* 기본값은 일반적으로 16px입니다. 더 크게 하려면 값을 높이세요 */
 }
 
+/* 미디어 쿼리 - 모바일 대응 수정 */
+@media (max-width: 768px) {
+    html {
+        font-size: 12px;
+    }
+}
+
+
+
 body {
     margin: 0;
     font-family: 'Segoe UI', Arial, sans-serif;

@@ -311,17 +311,33 @@
 
 
 
+/* 미디어 쿼리 - 모바일 대응 수정 */
+@media (max-width: 768px) {   
+    .content-card h3 {
+        font-size: 1.5rem; /* 더 작은 화면에 맞게 제목 크기 조정 */
+    }
+    
+    .content-card p, .content-card li {
+        font-size: 1rem;
+    }
+}
 
 
 
 
+@media (max-width: 768px) {
+    .content-card {
+        padding: 1.25rem;
+        margin-bottom: 1.5rem;
+    }
+}
 
 
 
 
-
-
-
+.content-card {
+    overflow-x: auto; /* 가로 스크롤 허용 */
+}
 
 
 
@@ -569,11 +585,19 @@
     color: white;
     font-size: 1.2rem;
 }
-
-.recommendation-item p {
-    margin-top: 1rem;
-    font-size: 0.95rem;
-    line-height: 1.6;
+/* 작은 모바일 화면 */
+@media (max-width: 480px) {
+    .section {
+        padding: 2rem 0.75rem;
+    }
+    
+    .section h2 {
+        font-size: 1.75rem;
+    }
+    
+    .content-card h3 {
+        font-size: 1.3rem;
+    }
 }
 
 /* 프로젝트 푸터 */
@@ -679,5 +703,20 @@
     
     .primary-button:hover {
         background: #357a38;
+    }
+}
+
+/* 작은 모바일 화면 */
+@media (max-width: 480px) {
+    .section {
+        padding: 2rem 0.75rem;
+    }
+    
+    .section h2 {
+        font-size: 1.75rem;
+    }
+    
+    .content-card h3 {
+        font-size: 1.3rem;
     }
 }

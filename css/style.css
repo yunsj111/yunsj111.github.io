@@ -1,6 +1,7 @@
 /* ===== 기본 스타일 ===== */
 html {
     scroll-behavior: smooth;
+    font-size: 16px;
 }
 
 body {

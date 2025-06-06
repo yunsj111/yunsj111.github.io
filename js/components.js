@@ -152,3 +152,50 @@ Vue.component('back-button', {
         }
     }
 });
+
+// 링크 버튼 컴포넌트
+Vue.component('link-button', {
+    props: {
+        text: {
+            type: String,
+            required: true
+        },
+        url: {
+            type: String,
+            required: true
+        },
+        customClass: {
+            type: String,
+            default: 'link-button'
+        },
+        isNewTab: {
+            type: Boolean,
+            default: false
+        }
+    },
+    template: `
+        <a :href="url" 
+           :class="customClass" 
+           :target="isNewTab ? '_blank' : '_self'"
+           :rel="isNewTab ? 'noopener noreferrer' : ''"
+           @click="handleClick">
+           {{ text }}
+        </a>
+    `,
+    methods: {
+        handleClick(e) {
+            if (!this.isNewTab) {
+                e.preventDefault();
+                
+                // 현재 스크롤 위치를 history state에 저장
+                const scrollPosition = window.pageYOffset;
+                history.replaceState({ scrollPos: scrollPosition }, document.title);
+                
+                // 새 페이지로 이동
+                window.location.href = this.url;
+            }
+            
+            // isNewTab이 true인 경우는 기본 동작(새 탭에서 열기)을 그대로 수행
+        }
+    }
+});

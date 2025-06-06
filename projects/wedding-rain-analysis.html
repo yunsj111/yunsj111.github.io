@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wedding Day Rain Predictor - Personal Project</title>
+    <title>Wedding Day Rainfall Analysis - Personal Project</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/project-detail.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
@@ -29,9 +29,15 @@
     <header class="project-header">
         <div class="header-bg" style="background: url('../source/wedding-rain.png') center center/cover no-repeat;"></div>
         <div class="header-content">
-            <h1>Wedding Day Rain Predictor</h1>
+            <h1>Wedding Day Rainfall Analysis</h1>
             <p>Statistical analysis of historical rainfall patterns for outdoor wedding planning</p>
-            <back-button text="← Back to Portfolio"></back-button>
+            <div>
+                <back-button text="← Back to Portfolio"></back-button>
+                <link-button 
+                    text="Go to App →" 
+                    url="https://weddingrainfallanalysis-ziqqwltavszxfbhqgrz7ap.streamlit.app/">
+                </link-button>
+            </div>
         </div>
     </header>
     
@@ -51,28 +57,11 @@
             <div id="overview">
                 <h2>Project Overview</h2>
                 <div class="content-card">
-                    <p>The Wedding Day Rain Predictor is a personal project inspired by my own wedding planning experience. Having planned an outdoor wedding ceremony, I was acutely aware that rainfall could significantly disrupt our special day. This motivated me to develop a data-driven tool designed to help couples planning outdoor weddings make informed decisions based on historical rainfall patterns. Using 30 years of meteorological data, this project analyzes seasonal trends, geographical variations, and probability distributions to provide actionable insights for wedding planning. The analysis helps couples identify optimal dates and times with the lowest likelihood of precipitation, turning weather uncertainty into a manageable planning factor.</p>
-                    
-                    <div class="project-highlights">
-                        <div class="highlight-item">
-                            <div class="highlight-icon">
-                                <!-- <img src="../source/icons/calendar.svg" alt="Calendar"> -->
-                            </div>
-                            <span>Completed: December 2023</span>
-                        </div>
-                        <div class="highlight-item">
-                            <div class="highlight-icon">
-                                <!-- <img src="../source/icons/tools.svg" alt="Tools"> -->
-                            </div>
-                            <span>Python, Pandas, Matplotlib, Scikit-learn</span>
-                        </div>
-                        <div class="highlight-item">
-                            <div class="highlight-icon">
-                                <!-- <img src="../source/icons/data.svg" alt="Data"> -->
-                            </div>
-                            <span>30+ years of meteorological data</span>
-                        </div>
-                    </div>
+                    <p>The Wedding Day Rainfall Analysis is a personal project inspired by my own wedding planning experience. 
+                        Having planned an outdoor wedding ceremony, I was acutely aware that rainfall could significantly disrupt our special day. 
+                        This motivated me to develop a data-driven tool designed to help couples planning outdoor weddings make informed decisions based on historical rainfall patterns. 
+                        Using 30 years of meteorological data, this project analyzes seasonal trends, geographical variations, and probability distributions to provide actionable insights for wedding planning. 
+                        The analysis helps couples identify optimal dates and times with the lowest likelihood of precipitation, turning weather uncertainty into a manageable planning factor.</p>
                 </div>
             </div>
 
@@ -165,10 +154,11 @@
                     
                     <!-- 하단의 Back 링크도 수정 -->
                     <div class="project-footer">
-                        <!-- <a href="../index.html" class="back-button" onclick="returnToSavedPosition()">← Back to Portfolio</a> -->
-                        
                         <back-button text="← Back to Portfolio"></back-button>
-                        <a href="#" class="button primary-button">View on GitHub</a>
+                        <link-button 
+                            text="Go to App →" 
+                            url="https://weddingrainfallanalysis-ziqqwltavszxfbhqgrz7ap.streamlit.app/">
+                        </link-button>
                     </div>
                 </div>
             </div>

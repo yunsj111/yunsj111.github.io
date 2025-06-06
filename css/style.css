@@ -628,3 +628,26 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
+.link-button {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background: rgba(42, 97, 45, 0.8);
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.link-button:hover {
+    transform: translateY(-3px);
+    background: rgba(42, 97, 45, 1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.link-button:active {
+    transform: translateY(-1px);
+}

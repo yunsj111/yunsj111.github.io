@@ -74,6 +74,7 @@
     display: inline-flex;
     align-items: center;
     margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
     color: white;
     text-decoration: none;
     font-weight: 500;
@@ -90,8 +91,27 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
+/* 링크 이동 버튼 */
+.link-button {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
 
-
+.link-button:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
 
 
 
